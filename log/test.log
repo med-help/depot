@@ -1,0 +1,95 @@
+  [1m[36m (50.4ms)[0m  [1mCREATE TABLE "products" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" text, "image_url" varchar(255), "price" decimal(8,2), "product_url" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (15.9ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (14.2ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.2ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (14.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20131126151513')[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.4ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "products"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "products" ("title", "description", "image_url", "price", "product_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 9.99, 'MyString', '2013-11-26 15:26:06', '2013-11-26 15:26:06', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "products" ("title", "description", "image_url", "price", "product_url", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 9.99, 'MyString', '2013-11-26 15:26:06', '2013-11-26 15:26:06', 298486374)[0m
+  [1m[35m (29.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+--------------------------------------------------
+ProductsControllerTest: test_should_create_product
+--------------------------------------------------
+  [1m[35mProduct Load (0.4ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT 1  [["id", 980190962]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "products"[0m
+Processing by ProductsController#create as HTML
+  Parameters: {"product"=>{"description"=>"MyText", "image_url"=>"MyString", "price"=>"9.99", "product_url"=>"MyString", "title"=>"MyString"}}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (2.0ms)[0m  [1mINSERT INTO "products" ("created_at", "description", "image_url", "price", "product_url", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 26 Nov 2013 15:26:06 UTC +00:00], ["description", "MyText"], ["image_url", "MyString"], ["price", #<BigDecimal:3c23e60,'0.999E1',18(18)>], ["product_url", "MyString"], ["title", "MyString"], ["updated_at", Tue, 26 Nov 2013 15:26:06 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/products/980190963
+Completed 302 Found in 50ms (ActiveRecord: 2.2ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "products"[0m
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+---------------------------------------------------
+ProductsControllerTest: test_should_destroy_product
+---------------------------------------------------
+  [1m[35mProduct Load (0.2ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT 1  [["id", 980190962]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "products"[0m
+Processing by ProductsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mProduct Load (0.1ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT 1  [["id", "980190962"]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "products" WHERE "products"."id" = ?  [["id", 980190962]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/products
+Completed 302 Found in 3ms (ActiveRecord: 0.5ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "products"
+  [1m[36m (0.3ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+--------------------------------------------
+ProductsControllerTest: test_should_get_edit
+--------------------------------------------
+  [1m[36mProduct Load (0.2ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by ProductsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mProduct Load (0.1ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT 1  [["id", "980190962"]]
+  Rendered products/_form.html.erb (44.5ms)
+Completed 200 OK in 1871ms (Views: 1869.0ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.3ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+---------------------------------------------
+ProductsControllerTest: test_should_get_index
+---------------------------------------------
+  [1m[36mProduct Load (0.3ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by ProductsController#index as HTML
+  [1m[35mProduct Load (10.6ms)[0m  SELECT "products".* FROM "products"
+Completed 200 OK in 19ms (Views: 7.5ms | ActiveRecord: 10.6ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+-------------------------------------------
+ProductsControllerTest: test_should_get_new
+-------------------------------------------
+  [1m[36mProduct Load (0.2ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by ProductsController#new as HTML
+  Rendered products/_form.html.erb (115.7ms)
+Completed 200 OK in 127ms (Views: 119.9ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+------------------------------------------------
+ProductsControllerTest: test_should_show_product
+------------------------------------------------
+  [1m[35mProduct Load (0.2ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT 1  [["id", 980190962]]
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mProduct Load (0.1ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT 1[0m  [["id", "980190962"]]
+Completed 200 OK in 41ms (Views: 40.1ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+--------------------------------------------------
+ProductsControllerTest: test_should_update_product
+--------------------------------------------------
+  [1m[35mProduct Load (0.2ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT 1  [["id", 980190962]]
+Processing by ProductsController#update as HTML
+  Parameters: {"product"=>{"description"=>"MyText", "image_url"=>"MyString", "price"=>"9.99", "product_url"=>"MyString", "title"=>"MyString"}, "id"=>"980190962"}
+  [1m[36mProduct Load (0.1ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT 1[0m  [["id", "980190962"]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/products/980190962
+Completed 302 Found in 13ms (ActiveRecord: 0.3ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
