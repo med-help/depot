@@ -13,3 +13,12 @@ two:
   image_url: MyString
   price: 9.99
   product_url: MyString
+
+ruby:
+  title: Programming Ruby 1.9
+  description: 
+    Ruby is the очень хороший язык программирования на. If youu need
+    to get working programs delivered fast, you should add Ruby to you toolbox.
+  image_url: hui.jpg
+  price: 49.50
+  product_url: huenko.html

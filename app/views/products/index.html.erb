@@ -30,7 +30,7 @@
         <td class="list_actions">
           <%= link_to 'Смотреть', product %><br>
           <%= link_to 'Редактировать', edit_product_path(product) %><br>
-          <%= link_to 'Удалить', product, confirm: 'Вы уверены?', method: :delete %><br>
+          <%= link_to 'Удалить', product, data: { confirm: 'Вы уверены?' }, method: :delete %><br>
           
         </td>
         
